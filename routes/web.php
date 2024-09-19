@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\BiayaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\TagihanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +21,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+Route::get('/', function () {
+    return to_route('dashboard');
+});
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::resource('siswa',SiswaController::class);
+Route::resource('tagihan',TagihanController::class);
+Route::resource('biaya',BiayaController::class);

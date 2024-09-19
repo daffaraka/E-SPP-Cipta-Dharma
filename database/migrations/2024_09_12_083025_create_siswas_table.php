@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('email');
             $table->string('angkatan');
             $table->string('kelas');
-            $table->foreignId('biaya_id')->constrained()->onDelete('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

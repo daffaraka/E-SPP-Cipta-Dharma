@@ -1,7 +1,7 @@
 @extends('admin.admin-layout')
 @section('content')
     <div class="row">
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-primary text-white mb-4">
                     <div class="card-body">
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <!-- Optionally add more cards if needed -->
-        </div>
+        </div> --}}
 
     </div>
 @endsection
