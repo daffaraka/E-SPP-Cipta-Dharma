@@ -13,10 +13,20 @@
             <label for="">Email</label>
             <input type="email" name="email" class="form-control" value="{{ $siswa->email }}">
         </div>
-
         <div class="mb-3">
             <label for="">Kelas</label>
-            <input type="text" name="kelas" class="form-control" value="{{ $siswa->kelas }}" required>
+            <select  name="kelas" class="form-control" required>
+                <option value="10A" @if($siswa->kelas == '10A') selected @endif>10A</option>
+                <option value="10B" @if($siswa->kelas == '10B') selected @endif>10B</option>
+                <option value="10C" @if($siswa->kelas == '10C') selected @endif>10C</option>
+                <option value="11A" @if($siswa->kelas == '11A') selected @endif>11A</option>
+                <option value="11B" @if($siswa->kelas == '11B') selected @endif>11B</option>
+                <option value="11C" @if($siswa->kelas == '11C') selected @endif>11C</option>
+                <option value="12A" @if($siswa->kelas == '12A') selected @endif>12A</option>
+                <option value="12B" @if($siswa->kelas == '12B') selected @endif>12B</option>
+                <option value="12C" @if($siswa->kelas == '12C') selected @endif>12C</option>
+
+            </select>
         </div>
         <div class="mb-3">
             <label for="">Angkatan</label>

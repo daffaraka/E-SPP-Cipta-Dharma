@@ -5,7 +5,7 @@
 
         <div class="mb-3">
             <label for="">Nama Siswa</label>
-            <input type="text" name="nama" class="form-control" required>
+            <input type="text" name="nama" class="form-control" required autocomplete="">
         </div>
 
         <div class="mb-3">
@@ -15,7 +15,18 @@
 
         <div class="mb-3">
             <label for="">Kelas</label>
-            <input type="text" name="kelas" class="form-control" required>
+            <select  name="kelas" class="form-control" required>
+                <option value="10A">10A</option>
+                <option value="10B">10B</option>
+                <option value="10C">10C</option>
+                <option value="11A">11A</option>
+                <option value="11B">11B</option>
+                <option value="11C">11C</option>
+                <option value="12A">12A</option>
+                <option value="12B">12B</option>
+                <option value="12C">12C</option>
+
+            </select>
         </div>
         <div class="mb-3">
             <label for="">Angkatan</label>
