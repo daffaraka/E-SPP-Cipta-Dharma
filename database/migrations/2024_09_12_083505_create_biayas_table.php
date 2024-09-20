@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('biayas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama_biaya');
             $table->integer('nominal');
             $table->string('nama_nominal');
             $table->year('tahun');
-            $table->date('bulan');
+            $table->string('bulan');
             $table->string('level');
 
             $table->timestamps();

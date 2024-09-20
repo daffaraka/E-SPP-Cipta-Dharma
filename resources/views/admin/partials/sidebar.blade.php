@@ -12,12 +12,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Siswa
                 </a>
-                {{-- <a class="nav-link collapsed" href="{{ route('barang-masuk.index') }}"
-                 data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
-                    aria-expanded="false" aria-controls="collapseLayouts">
+                <a class="nav-link collapsed" href="{{ route('biaya.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Barang Masuk
-                </a> --}}
+                    Biaya
+                </a>
                 {{-- <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
@@ -25,7 +23,7 @@
                         <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
                     </nav>
                 </div> --}}
-                {{-- <a class="nav-link collapsed" href="{{ route('barang-keluar.index') }}"
+                {{-- <a class="nav-link collapsed" href="{{ route('biaya.index') }}"
                 data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false"
                     aria-controls="collapsePages">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>

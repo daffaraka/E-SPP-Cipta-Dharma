@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Biaya extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nama_biaya',
+        'nominal',
+        'nama_nominal',
+        'tahun',
+        'bulan',
+        'level',
+    ];
 }
