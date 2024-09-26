@@ -16,6 +16,11 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Biaya
                 </a>
+
+                <a class="nav-link collapsed" href="{{ route('tagihan.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    Tagihan
+                </a>
                 {{-- <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">

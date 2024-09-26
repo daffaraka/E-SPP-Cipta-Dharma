@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Biaya;
+use App\Models\Siswa;
 use App\Models\Tagihan;
 use Illuminate\Http\Request;
 
@@ -10,7 +12,9 @@ class TagihanController extends Controller
 
     public function index()
     {
-        //
+        $data['judul'] = 'Tagihan';
+        $data['tagihans'] = Tagihan::with(['siswa','biaya','penerbit','melunasi'])->latest()->paginate(10);
+        return view('admin.tagihan.tagihan-index',$data);
     }
 
     /**
@@ -20,7 +24,11 @@ class TagihanController extends Controller
      */
     public function create()
     {
-        //
+        $data['judul'] = 'Tambah Tagihan';
+        $data['siswas'] = Siswa::select('id','nama')->get();
+        $data['biayas'] = Biaya::select('id','nama_biaya')->get();
+
+        return view('admin.tagihan.tagihan-create',$data);
     }
 
     /**

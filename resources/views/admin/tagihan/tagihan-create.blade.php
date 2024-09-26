@@ -1,6 +1,6 @@
 @extends('admin.admin-layout')
 @section('content')
-    <form action="{{ route('barang-masuk.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('tagihan.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
