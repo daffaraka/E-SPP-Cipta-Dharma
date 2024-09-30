@@ -14,6 +14,37 @@ class BiayaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Biaya::create([
+            'nama_biaya' => 'SPP',
+            'nominal' => 50000,
+            'nama_nominal' => 'SPP',
+            'tahun' => 2022,
+            'bulan' => 'Januari',
+            'level' => 'X',
+        ]);
+        \App\Models\Biaya::create([
+            'nama_biaya' => 'Uang Bangunan',
+            'nominal' => 200000,
+            'nama_nominal' => 'Uang Bangunan',
+            'tahun' => 2022,
+            'bulan' => 'Januari',
+            'level' => 'X',
+        ]);
+        \App\Models\Biaya::create([
+            'nama_biaya' => 'Uang Kegiatan',
+            'nominal' => 100000,
+            'nama_nominal' => 'Uang Kegiatan',
+            'tahun' => 2022,
+            'bulan' => 'Januari',
+            'level' => 'X',
+        ]);
+        \App\Models\Biaya::create([
+            'nama_biaya' => 'Uang Lain-Lain',
+            'nominal' => 50000,
+            'nama_nominal' => 'Uang Lain-Lain',
+            'tahun' => 2022,
+            'bulan' => 'Januari',
+            'level' => 'X',
+        ]);
     }
 }

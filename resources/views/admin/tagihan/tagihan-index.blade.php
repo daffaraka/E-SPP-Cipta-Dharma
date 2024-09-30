@@ -25,15 +25,15 @@
                     <td>{{ $tagihan->biaya->nama_biaya }}</td>
                     <td>{{ $tagihan->siswa->nama }}</td>
                     <td>{{ $tagihan->tanggal_terbit }}</td>
-                    <td>{{ $tagihan->tanggal_lunas }}</td>
-                    <td>{{ $tagihan->penerbit->nama }}</td>
-                    <td>{{ $tagihan->melunasi->nama }}</td>
+                    <td>{{ $tagihan->tanggal_lunas ?? '-' }}</td>
+                    <td>{{ $tagihan->penerbit->name }}</td>
+                    <td>{{ $tagihan->melunasi->name ?? '-' }}</td>
 
                     <td>{{ \Carbon\Carbon::parse($tagihan->created_at)->isoFormat('HH:mm:ss, dddd, D MMMM Y') }}</td>
                     <td>
-                        <a href="{{ route('tagihan-masuk.edit', $tagihan->id) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('tagihan.edit', $tagihan->id) }}" class="btn btn-warning">Edit</a>
 
-                        <form action="{{ route('tagihan-masuk.destroy', $tagihan->id) }}" method="POST"
+                        <form action="{{ route('tagihan.destroy', $tagihan->id) }}" method="POST"
                             style="display:inline;">
                             @csrf
                             @method('DELETE')

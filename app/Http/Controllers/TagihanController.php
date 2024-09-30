@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Biaya;
 use App\Models\Siswa;
 use App\Models\Tagihan;
@@ -17,73 +18,81 @@ class TagihanController extends Controller
         return view('admin.tagihan.tagihan-index',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $data['judul'] = 'Tambah Tagihan';
         $data['siswas'] = Siswa::select('id','nama')->get();
-        $data['biayas'] = Biaya::select('id','nama_biaya')->get();
+        $data['biayas'] = Biaya::select('id','nama_biaya','nominal')->get();
 
         return view('admin.tagihan.tagihan-create',$data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'siswa_id' => 'required',
+            'biaya_id' => 'required',
+        ],[
+            'siswa_id.required' => 'Siswa harus dipilih',
+            'biaya_id.required' => 'Biaya harus dipilih',
+        ]);
+
+
+        $tagihan = new Tagihan();
+        $tagihan->nama_tagihan = $request->nama_tagihan;
+        $tagihan->siswa_id = $request->siswa_id;
+        $tagihan->biaya_id = $request->biaya_id;
+        $tagihan->tanggal_terbit = Carbon::now();
+        $tagihan->biaya_id = $request->biaya_id;
+        $tagihan->user_penerbit_id = auth()->user()->id;
+
+        $tagihan->save();
+
+        return to_route('tagihan.index')->with('success','Tagihan baru ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Tagihan  $tagihan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Tagihan $tagihan)
-    {
-        //
-    }
+    // public function show(Tagihan $tagihan)
+    // {
+    //     $data['judul'] = 'Edit Data Tagihan';
+    //     $data['tagihan'] = $tagihan;
+    //     return view('admin.tagihan.tagihan-edit',$data);
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Tagihan  $tagihan
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Tagihan $tagihan)
     {
-        //
+        $data['judul'] = 'Edit Data Tagihan';
+        $data['siswas'] = Siswa::select('id','nama')->get();
+        $data['biayas'] = Biaya::select('id','nama_biaya','nominal')->get();
+        $data['tagihan'] = $tagihan;
+        return view('admin.tagihan.tagihan-edit',$data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tagihan  $tagihan
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Tagihan $tagihan)
     {
-        //
+        $request->validate([
+            'siswa_id' => 'required',
+            'biaya_id' => 'required',
+        ],[
+            'siswa_id.required' => 'Siswa harus dipilih',
+            'biaya_id.required' => 'Biaya harus dipilih',
+        ]);
+
+
+        $tagihan->nama_tagihan = $request->nama_tagihan;
+        $tagihan->siswa_id = $request->siswa_id;
+        $tagihan->biaya_id = $request->biaya_id;
+        $tagihan->tanggal_terbit = $request->tanggal_terbit;
+        $tagihan->tanggal_lunas = $request->tanggal_lunas;
+        $tagihan->biaya_id = $request->biaya_id;
+        $tagihan->user_penerbit_id = auth()->user()->id;
+
+        return to_route('tagihan.index')->with('success','Tagihan telah diperbarui');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Tagihan  $tagihan
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Tagihan $tagihan)
     {
-        //
+
     }
 }
+

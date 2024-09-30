@@ -36,3 +36,20 @@
     </div>
 @endif
 
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var closeButtons = document.querySelectorAll(".alert .close");
+        closeButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                var alert = this.parentElement;
+                alert.style.transition = "opacity 0.5s ease";
+                alert.style.opacity = "0";
+                setTimeout(function() {
+                    alert.style.display = "none";
+                }, 500);
+            });
+        });
+    });
+</script>

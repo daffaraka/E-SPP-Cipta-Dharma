@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('tagihans', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_terbit');
-            $table->date('tanggal_lunas');
+            $table->string('nama_tagihan');
+            $table->date('tanggal_terbit')->nullable();
+            $table->date('tanggal_lunas')->nullable();
             $table->unsignedBigInteger('user_penerbit_id')->nullable();
             $table->unsignedBigInteger('user_melunasi_id')->nullable();
 
