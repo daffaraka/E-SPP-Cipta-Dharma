@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/public/bukti-pelunasan
 .env
 .env.backup
 .phpunit.result.cache

@@ -6,6 +6,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PelunasanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('biaya',BiayaController::class);
 
 
+    Route::get('pelunasan/{id}', [PelunasanController::class, 'tagihan'])->name('pelunasan.tagihan');
+    Route::post('lunasi/{id}',[PelunasanController::class,'lunasi'])->name('pelunasan.lunasi');
+    Route::view('print','admin.tagihan.tagihan-print');
+
 });
 
-Route::view('print','admin.tagihan.tagihan-print');
 
 require __DIR__.'/auth.php';
 

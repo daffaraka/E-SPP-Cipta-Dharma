@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
-    <title>{{ $judul ?? 'Dashboard - SB Admin'}} </title>
+    <title>{{ $judul ?? 'Dashboard - SB Admin' }} </title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="{{ asset('dist/css/styles.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -44,9 +44,13 @@
                         <hr class="dropdown-divider" />
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault(); document.querySelector('form').submit();">Logout</a>
-                        <form action="{{route('logout')}}" method="POST">
+
+                        <form action="{{ route('logout') }}" method="POST">
                             @csrf
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                this.closest('form').submit();">Logout</a>
+
                         </form>
                 </ul>
             </li>
@@ -57,7 +61,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">{{$judul ?? 'Dashboard'}}</h1>
+                    <h1 class="mt-4">{{ $judul ?? 'Dashboard' }}</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>

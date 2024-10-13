@@ -42,7 +42,14 @@
             <label> Boleh dikosongi </label>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <div class="mb-3">
+            <label for="">Status Pelunasan</label>
+            <select type="date" name="status"  class="form-control" value="{{ $tagihan->status }}">
+            <label> Boleh dikosongi </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary my-3">Submit</button>
     </form>
 @endsection
 

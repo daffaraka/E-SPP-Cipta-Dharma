@@ -19,11 +19,18 @@ class Siswa extends Model
         'email',
         'angkatan',
         'kelas',
+        'user_id'
     ];
 
 
-    public function biaya()
+    public function tagihans()
     {
-        return $this->belongsTo(Biaya::class);
+        return $this->hasMany(Tagihan::class);
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 }

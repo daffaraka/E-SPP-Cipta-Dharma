@@ -10,6 +10,7 @@
                 <th>#</th>
                 <th>Nama Biaya</th>
                 <th>Siswa</th>
+                <th>Status</th>
                 <th>Tanggal Terbit</th>
                 <th>Tanggal Lunas</th>
                 <th>Admin Penerbit</th>
@@ -24,6 +25,13 @@
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $tagihan->biaya->nama_biaya }}</td>
                     <td>{{ $tagihan->siswa->nama }}</td>
+                    <td>
+                        @if ($tagihan->status == 'Belum Lunas')
+                            <span class="badge rounded-pill bg-danger">Belum Lunas</span>
+                        @else
+                            <span class="badge rounded-pill bg-success">Lunas</span>
+                        @endif
+                    </td>
                     <td>{{ $tagihan->tanggal_terbit }}</td>
                     <td>{{ $tagihan->tanggal_lunas ?? '-' }}</td>
                     <td>{{ $tagihan->penerbit->name }}</td>

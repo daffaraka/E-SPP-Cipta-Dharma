@@ -21,7 +21,7 @@ class TagihanController extends Controller
     public function create()
     {
         $data['judul'] = 'Tambah Tagihan';
-        $data['siswas'] = Siswa::select('id','nama')->get();
+        $data['siswas'] = Siswa::with('user')->get();
         $data['biayas'] = Biaya::select('id','nama_biaya','nominal')->get();
 
         return view('admin.tagihan.tagihan-create',$data);
@@ -29,6 +29,8 @@ class TagihanController extends Controller
 
     public function store(Request $request)
     {
+
+        // dd($request->all());
         $request->validate([
             'siswa_id' => 'required',
             'biaya_id' => 'required',
@@ -42,7 +44,8 @@ class TagihanController extends Controller
         $tagihan->nama_tagihan = $request->nama_tagihan;
         $tagihan->siswa_id = $request->siswa_id;
         $tagihan->biaya_id = $request->biaya_id;
-        $tagihan->tanggal_terbit = Carbon::now();
+        $tagihan->tanggal_terbit = $request->tanggal_terbit ?? Carbon::now();
+        $tagihan->tanggal_lunas = $request->tanggal_lunas;
         $tagihan->biaya_id = $request->biaya_id;
         $tagihan->user_penerbit_id = auth()->user()->id;
 
@@ -84,6 +87,7 @@ class TagihanController extends Controller
         $tagihan->tanggal_terbit = $request->tanggal_terbit;
         $tagihan->tanggal_lunas = $request->tanggal_lunas;
         $tagihan->biaya_id = $request->biaya_id;
+        $tagihan->status = $request->status;
         $tagihan->user_penerbit_id = auth()->user()->id;
 
         return to_route('tagihan.index')->with('success','Tagihan telah diperbarui');

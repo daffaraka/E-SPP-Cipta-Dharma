@@ -13,15 +13,17 @@ class Tagihan extends Model
     [
         'tanggal_terbit',
         'tanggal_lunas',
+        'bukti_pelunasan',
+        'status',
         'user_penerbit_id',
         'user_melunasi_id',
         'biaya_id',
-        'siswa_id'
+        'siswa_id',
     ];
 
     public function siswa()
     {
-        return $this->belongsTo(Siswa::class);
+        return $this->belongsTo(Siswa::class,'siswa_id');
     }
 
     public function biaya()

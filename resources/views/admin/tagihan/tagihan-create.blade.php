@@ -21,10 +21,10 @@
 
 
         <div class="mb-3">
-            <label for="">Siswa</label>
+            <label for="">Ditujukan kepada</label>
             <select type="text" name="siswa_id" id="siswa_id" class="form-control" required>
                 @foreach ($siswas as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama }} - Kelas {{ $item->kelas }} </option>
+                    <option value="{{ $item->id }}">{{$item->user->id}} - {{ $item->nama }} - Kelas {{ $item->kelas }} </option>
                 @endforeach
             </select>
         </div>
@@ -32,17 +32,26 @@
 
         <div class="mb-3">
             <label for="">Tanggal Terbit</label>
-            <input type="date" name="tanggal_terbit"  class="form-control">
-            <label> Jika dikosongi otomatis di isi hari ini </label>
+            <input type="date" name="tanggal_terbit" class="form-control">
+            <p class="fw-bold"> Jika dikosongi otomatis di isi hari ini </p>
         </div>
 
         <div class="mb-3">
             <label for="">Tanggal Lunas</label>
-            <input type="date" name="tanggal_lunas"  class="form-control">
+            <input type="date" name="tanggal_lunas" class="form-control">
             <label> Boleh dikosongi </label>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-3">
+            <label for="">Status Pelunasan</label>
+            <select name="status" class="form-control">
+                <option value="Belum Lunas">Belum Lunas</option>
+                <option value="Lunas">Lunas</option>
+
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary my-3">Submit</button>
     </form>
 @endsection
 
