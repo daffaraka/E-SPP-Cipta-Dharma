@@ -23,7 +23,7 @@
             @foreach ($siswas as $index => $siswa)
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $siswa->nama }}</td>
+                    <td>{{ $siswa->name }}</td>
                     <td>{{ $siswa->tanggal_lahir }}</td>
                     <td>{{ $siswa->nama_wali }}</td>
                     <td>{{ $siswa->alamat }}</td>

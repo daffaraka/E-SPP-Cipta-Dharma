@@ -18,12 +18,12 @@ class Tagihan extends Model
         'user_penerbit_id',
         'user_melunasi_id',
         'biaya_id',
-        'siswa_id',
+        'user_id',
     ];
 
     public function siswa()
     {
-        return $this->belongsTo(Siswa::class,'siswa_id');
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function biaya()

@@ -19,7 +19,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Deepublish</a>
+        <a class="navbar-brand ps-3" href="index.html">E SPP Chipta Dharama</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -95,6 +95,24 @@
     <script src="{{ asset('dist/assets/demo/chart-bar-demo.js') }} "></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="{{ asset('dist/js/datatables-simple-demo.js') }} "></script>
+
+    {{-- <script>
+        // Get all collapse elements
+        const collapses = document.querySelectorAll('.collapse');
+
+        // Add event listener to each collapse
+        collapses.forEach(collapse => {
+            collapse.addEventListener('show.bs.collapse', event => {
+                // Close all other collapses if one is shown
+                collapses.forEach(otherCollapse => {
+                    if (otherCollapse !== collapse && otherCollapse.classList.contains('show')) {
+                        otherCollapse.classList.remove('show');
+                    }
+                });
+            });
+        });
+    </script> --}}
+
 </body>
 
 </html>

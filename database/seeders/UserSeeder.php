@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Faker\Factory as Faker;
+
 
 class UserSeeder extends Seeder
 {
@@ -15,6 +17,14 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+
+        $faker = Faker::create('id_ID');
+        $agama = ['Islam', 'Kristen', 'Katholik', 'Hindu', 'Budha'];
+        $jk = ['Laki-laki', 'Perempuan'];
+        $angkatan = [2021, 2022, 2023, 2024];
+        $kelas = ['10A', '10B', '11A', '11B', '12A', '12B'];
+
+
         $admin =  User::create(
             [
                 'name' => 'Admin',
@@ -42,6 +52,13 @@ class UserSeeder extends Seeder
                     'name' => 'User ' . $i,
                     'email' => 'user' . $i . '@gmail.com',
                     'password' => bcrypt('password'),
+                    'tanggal_lahir' => $faker->date(),
+                    'nama_wali' => $faker->name,
+                    'alamat' => $faker->address,
+                    'no_telp' => $faker->phoneNumber,
+                    'angkatan' => $angkatan[array_rand($angkatan)],
+                    'kelas' => $kelas[array_rand($kelas)],
+                    'created_at' => now(),
                 ]
             );
 

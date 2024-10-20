@@ -9,7 +9,7 @@
                     <div class="card-body ">
                         <h5 class="card-title">Tagihan yang belum anda bayarkan</h5>
 
-                        @foreach ($tagihanBelumLunas->siswa->tagihans as $tagihan)
+                        @foreach ($tagihanBelumLunas->tagihans as $tagihan)
                             <div class="card my-3">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $tagihan->nama_tagihan }} - <span

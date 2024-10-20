@@ -24,7 +24,7 @@
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $tagihan->biaya->nama_biaya }}</td>
-                    <td>{{ $tagihan->siswa->nama }}</td>
+                    <td>{{ $tagihan->siswa->name }}</td>
                     <td>
                         @if ($tagihan->status == 'Belum Lunas')
                             <span class="badge rounded-pill bg-danger">Belum Lunas</span>

@@ -11,7 +11,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +22,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'tanggal_lahir',
+        'nama_wali',
+        'alamat',
+        'no_telp',
+        'angkatan',
+        'kelas',
+        'user_id'
     ];
 
     /**
@@ -43,8 +50,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function siswa()
+
+    public function tagihans()
     {
-        return $this->hasOne(Siswa::class);
+        return $this->hasMany(Tagihan::class);
     }
 }

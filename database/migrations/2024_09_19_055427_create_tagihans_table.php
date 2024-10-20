@@ -20,10 +20,10 @@ return new class extends Migration
             $table->date('tanggal_lunas')->nullable();
             $table->unsignedBigInteger('user_penerbit_id')->nullable();
             $table->unsignedBigInteger('user_melunasi_id')->nullable();
-            $table->enum('status',['Belum Lunas','Lunas'])->default('Belum Lunas');
+            $table->enum('status',['Belum Lunas','Diajukan','Lunas'])->default('Belum Lunas');
             $table->string('bukti_pelunasan')->nullable();
 
-            $table->foreignId('siswa_id')->constrained()->onDelete('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onDelete('cascade');
             $table->foreignId('biaya_id')->constrained()->onDelete('cascade')->onDelete('cascade');
             $table->foreign('user_penerbit_id')->references('id')->on('users')->onDelete('cascade')->onDelete('cascade');
             $table->foreign('user_melunasi_id')->references('id')->on('users')->onDelete('cascade')->onDelete('cascade');

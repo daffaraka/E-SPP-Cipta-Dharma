@@ -16,7 +16,7 @@
             <div class="col-xxl-8 col-xl-8 col-lg-8 col-12">
                 <div class="mb-3">
                     <label for="">Identitas Siswa</label>
-                    <input type="text" value="{{ $tagihan->siswa->nama }}" class="form-control" readonly>
+                    <input type="text" value="{{ $tagihan->siswa->name }}" class="form-control" readonly>
                 </div>
 
                 <div class="mb-3">

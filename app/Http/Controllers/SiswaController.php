@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Siswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -11,7 +11,7 @@ class SiswaController extends Controller
     public function index()
     {
         $data['judul'] = 'Data Siswa';
-        $data['siswas'] = Siswa::latest()->paginate(10);
+        $data['siswas'] = User::latest()->paginate(10);
 
         return view('admin.siswa.siswa-index',$data);
     }
@@ -34,7 +34,7 @@ class SiswaController extends Controller
         ]);
 
 
-        Siswa::create(
+        User::create(
             [
                 'nama' => $request->nama,
                 'tanggal_lahir' => $request->tanggal_lahir,
@@ -52,17 +52,14 @@ class SiswaController extends Controller
     }
 
 
-    public function show(Siswa $siswa)
-    {
-        //
-    }
 
 
-    public function edit(Siswa $siswa)
+
+    public function edit(User $siswa)
     {
         return view('admin.siswa.siswa-edit',compact('siswa'));
     }
-    public function update(Request $request, Siswa $siswa)
+    public function update(Request $request, User $siswa)
     {
         $this->validate($request,[
             'nama' => 'required',
@@ -92,7 +89,7 @@ class SiswaController extends Controller
     }
 
 
-    public function destroy(Siswa $siswa)
+    public function destroy(User $siswa)
     {
         $siswa->delete();
         return redirect()->route('siswa.index')->with('success','Data siswa telah dihapus');

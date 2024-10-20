@@ -22,9 +22,9 @@
 
         <div class="mb-3">
             <label for="">Siswa</label>
-            <select type="text" name="siswa_id" id="siswa_id" class="form-control" required>
+            <select type="text" name="user_id" id="user_id" class="form-control" required>
                 @foreach ($siswas as $item)
-                    <option value="{{ $item->id }}" {{ $tagihan->siswa_id == $item->id ? 'selected' : '' }}>{{ $item->nama }} - Kelas {{ $item->kelas }} </option>
+                    <option value="{{ $item->id }}" {{ $tagihan->user_id == $item->id ? 'selected' : '' }}>{{ $item->nama }} - Kelas {{ $item->kelas }} </option>
                 @endforeach
             </select>
         </div>

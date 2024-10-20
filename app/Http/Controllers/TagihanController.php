@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Biaya;
 use App\Models\Siswa;
 use App\Models\Tagihan;
@@ -21,7 +22,7 @@ class TagihanController extends Controller
     public function create()
     {
         $data['judul'] = 'Tambah Tagihan';
-        $data['siswas'] = Siswa::with('user')->get();
+        $data['siswas'] = User::role('SiswaOrangTua')->get();
         $data['biayas'] = Biaya::select('id','nama_biaya','nominal')->get();
 
         return view('admin.tagihan.tagihan-create',$data);
@@ -32,17 +33,17 @@ class TagihanController extends Controller
 
         // dd($request->all());
         $request->validate([
-            'siswa_id' => 'required',
+            'user_id' => 'required',
             'biaya_id' => 'required',
         ],[
-            'siswa_id.required' => 'Siswa harus dipilih',
+            'user_id.required' => 'Siswa harus dipilih',
             'biaya_id.required' => 'Biaya harus dipilih',
         ]);
 
 
         $tagihan = new Tagihan();
         $tagihan->nama_tagihan = $request->nama_tagihan;
-        $tagihan->siswa_id = $request->siswa_id;
+        $tagihan->user_id = $request->user_id;
         $tagihan->biaya_id = $request->biaya_id;
         $tagihan->tanggal_terbit = $request->tanggal_terbit ?? Carbon::now();
         $tagihan->tanggal_lunas = $request->tanggal_lunas;
@@ -64,7 +65,7 @@ class TagihanController extends Controller
     public function edit(Tagihan $tagihan)
     {
         $data['judul'] = 'Edit Data Tagihan';
-        $data['siswas'] = Siswa::select('id','nama')->get();
+        $data['siswas'] = User::select('id','nama')->get();
         $data['biayas'] = Biaya::select('id','nama_biaya','nominal')->get();
         $data['tagihan'] = $tagihan;
         return view('admin.tagihan.tagihan-edit',$data);
@@ -73,16 +74,16 @@ class TagihanController extends Controller
     public function update(Request $request, Tagihan $tagihan)
     {
         $request->validate([
-            'siswa_id' => 'required',
+            'user_id' => 'required',
             'biaya_id' => 'required',
         ],[
-            'siswa_id.required' => 'Siswa harus dipilih',
+            'user_id.required' => 'Siswa harus dipilih',
             'biaya_id.required' => 'Biaya harus dipilih',
         ]);
 
 
         $tagihan->nama_tagihan = $request->nama_tagihan;
-        $tagihan->siswa_id = $request->siswa_id;
+        $tagihan->user_id = $request->user_id;
         $tagihan->biaya_id = $request->biaya_id;
         $tagihan->tanggal_terbit = $request->tanggal_terbit;
         $tagihan->tanggal_lunas = $request->tanggal_lunas;
