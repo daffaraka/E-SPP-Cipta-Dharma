@@ -11,7 +11,7 @@ class SiswaController extends Controller
     public function index()
     {
         $data['judul'] = 'Data Siswa';
-        $data['siswas'] = User::latest()->paginate(10);
+        $data['siswas'] = User::role('SiswaOrangTua')->latest()->paginate(10);
 
         return view('admin.siswa.siswa-index',$data);
     }
