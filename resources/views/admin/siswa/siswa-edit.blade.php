@@ -14,6 +14,11 @@
             <input type="email" name="email" class="form-control" value="{{ $siswa->email }}">
         </div>
         <div class="mb-3">
+            <label for="">Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
             <label for="">Kelas</label>
             <select  name="kelas" class="form-control" required>
                 <option value="10A" @if($siswa->kelas == '10A') selected @endif>10A</option>
@@ -64,7 +69,7 @@
 
         <div class="mb-3">
             <label for="">No Telfon</label>
-            <input type="number" name="no_telp" class="form-control" value="{{ $siswa->no_telp }}" required>
+            <input type="text" name="no_telp" class="form-control" value="{{ $siswa->no_telp }}" required>
         </div>
 
 
@@ -76,4 +81,8 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+
+
 @endsection
+

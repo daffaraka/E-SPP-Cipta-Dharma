@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 
         $admin =  User::create(
             [
-                'name' => 'Admin',
+                'nama' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('password'),
             ]
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
 
         $kepsek = User::create(
             [
-                'name' => 'Kepsek',
+                'nama' => 'Kepsek',
                 'email' => 'kepsek@gmail.com',
                 'password' => bcrypt('password')
             ]
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $user = User::create(
                 [
-                    'name' => 'User ' . $i,
+                    'nama' => 'User ' . $i,
                     'email' => 'user' . $i . '@gmail.com',
                     'password' => bcrypt('password'),
                     'tanggal_lahir' => $faker->date(),

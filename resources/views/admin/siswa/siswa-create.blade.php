@@ -14,6 +14,12 @@
         </div>
 
         <div class="mb-3">
+            <label for="">Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+
+
+        <div class="mb-3">
             <label for="">Kelas</label>
             <select  name="kelas" class="form-control" required>
                 <option value="10A">10A</option>
