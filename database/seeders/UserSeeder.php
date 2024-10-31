@@ -46,6 +46,7 @@ class UserSeeder extends Seeder
         $kepsek->assignRole('KepalaSekolah');
 
 
+        $jk = ['Laki-laki', 'Perempuan'];
         for ($i = 0; $i < 10; $i++) {
             $user = User::create(
                 [
@@ -58,6 +59,7 @@ class UserSeeder extends Seeder
                     'no_telp' => $faker->phoneNumber,
                     'angkatan' => $angkatan[array_rand($angkatan)],
                     'kelas' => $kelas[array_rand($kelas)],
+                    'jenis_kelamin' => $jk[array_rand($jk)],
                     'created_at' => now(),
                 ]
             );

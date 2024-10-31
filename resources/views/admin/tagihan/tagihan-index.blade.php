@@ -4,7 +4,7 @@
         <a href="{{ route('tagihan.create') }}" class="btn btn-primary">Tambah Data Tagihan</a>
 
     </div>
-    <table class="table table-light">
+    <table class="table table-light" id="dataTable">
         <thead class="thead-light">
             <tr>
                 <th>#</th>
@@ -55,3 +55,6 @@
         </tbody>
     </table>
 @endsection
+@push('scripts')
+
+@endpush

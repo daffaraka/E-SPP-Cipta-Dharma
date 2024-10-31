@@ -78,7 +78,13 @@
             <label for="">Nama Wali</label>
             <input type="text" name="nama_wali" class="form-control" required>
         </div>
-
+        <div class="mb-3">
+            <label for="">Jenis Kelamin Wali</label>
+            <select type="text" name="jenis_kelamin_wali" id="jenis_kelamin_wali" class="form-control" required>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

@@ -137,9 +137,7 @@
 @endsection
 @push('scripts')
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('#dataTable').DataTable();
-        });
+
 
         $(document).on('click', '#btnDetail', function() {
             var id = $(this).data('id');
@@ -154,6 +152,7 @@
                     $('#kelas').val(response.kelas);
                     $('#angkatan').val(response.angkatan);
                     $('#tanggal_lahir').val(response.tanggal_lahir);
+                    $('#jenis_kelamin').val(response.jenis_kelamin);
                     $('#nama_wali').val(response.nama_wali);
                     $('#no_telp').val(response.no_telp);
                     $('#alamat').val(response.alamat);

@@ -4,7 +4,7 @@
         <a href="{{ route('biaya.create') }}" class="btn btn-primary">Tambah Data Biaya Baru</a>
 
     </div>
-    <table class="table table-light">
+    <table class="table table-light" id="dataTable">
         <thead class="thead-light">
             <tr>
                 <th>#</th>
@@ -46,3 +46,7 @@
         </tbody>
     </table>
 @endsection
+
+@push('scripts')
+
+@endpush

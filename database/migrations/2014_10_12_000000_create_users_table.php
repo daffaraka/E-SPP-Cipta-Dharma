@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('no_telp')->nullable();
             $table->string('angkatan')->nullable();
             $table->string('kelas')->nullable();
+            $table->enum('jenis_kelamin',['Laki-laki','Perempuan'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
