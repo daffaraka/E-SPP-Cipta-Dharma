@@ -127,7 +127,7 @@
                         $.each(data, function(index, value) {
                             $('#dataTables tbody').append('<tr>' +
                                 '<td>' + (index + 1) + '</td>' +
-                                '<td>' + value.nama_tagihan + '</td>' +
+                                '<td>' + value.nama_biaya + '</td>' +
                                 '<td>' + value.siswa.nama + '</td>' +
                                 '<td>' + (value.status === 'Belum Lunas' ? '<span class="badge rounded-pill bg-danger">Belum Lunas</span>' : '<span class="badge rounded-pill bg-success">Lunas</span>') + '</td>' +
                                 '<td>' + value.tanggal_terbit + '</td>' +

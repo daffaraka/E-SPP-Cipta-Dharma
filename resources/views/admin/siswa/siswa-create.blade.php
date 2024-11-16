@@ -28,6 +28,12 @@
             <input type="password" name="password" class="form-control" required>
         </div>
 
+
+        <div class="mb-3">
+            <label for="">Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+
         <div class="mb-3">
             <label for="">Tanggal Lahir</label>
             <input type="date" name="tanggal_lahir" class="form-control" required>
@@ -67,26 +73,6 @@
             <input type="text" name="nama_wali" class="form-control" required>
         </div>
 
-        <div class="mb-3">
-            <label for="">Angkatan</label>
-            <input type="number" name="angkatan" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="">Kelas</label>
-            <select  name="kelas" class="form-control" required>
-                <option value="10A">10A</option>
-                <option value="10B">10B</option>
-                <option value="10C">10C</option>
-                <option value="11A">11A</option>
-                <option value="11B">11B</option>
-                <option value="11C">11C</option>
-                <option value="12A">12A</option>
-                <option value="12B">12B</option>
-                <option value="12C">12C</option>
-
-            </select>
-        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

@@ -23,6 +23,8 @@ class SiswaController extends Controller
     }
 
 
+
+
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -52,6 +54,7 @@ class SiswaController extends Controller
                 'nama_wali' => $request->nama_wali,
                 'alamat' => $request->alamat,
                 'no_telp' => $request->no_telp,
+                'email' => $request->email,
                 'angkatan' => $request->angkatan,
                 'kelas' => $request->kelas,
                 'jenis_kelamin' => $request->jenis_kelamin,
@@ -64,7 +67,12 @@ class SiswaController extends Controller
 
 
 
+    public function show($id)
+    {
+        $user = User::find($id);
 
+        return response()->json($user);
+    }
 
     public function edit(User $siswa)
     {
@@ -99,6 +107,7 @@ class SiswaController extends Controller
                 'nama_wali' => $request->nama_wali,
                 'alamat' => $request->alamat,
                 'no_telp' => $request->no_telp,
+                'email' => $request->email,
                 'angkatan' => $request->angkatan,
                 'kelas' => $request->kelas,
                 'jenis_kelamin' => $request->jenis_kelamin,

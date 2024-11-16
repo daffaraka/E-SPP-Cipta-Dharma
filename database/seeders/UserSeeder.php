@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 
         $admin =  User::create(
             [
-                'nama' => 'Petugas',
+                'name' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('password'),
             ]
@@ -46,12 +46,11 @@ class UserSeeder extends Seeder
         $kepsek->assignRole('KepalaSekolah');
 
 
+        $jk = ['Laki-laki', 'Perempuan'];
         for ($i = 0; $i < 10; $i++) {
             $user = User::create(
                 [
-                    'nama' => $faker->name,
-                    'nis' => $faker->unique()->numberBetween(100000, 999999),
-                    'nisn' => $faker->unique()->numberBetween(1000000000, 9999999999),
+                    'name' => 'User ' . $i,
                     'email' => 'user' . $i . '@gmail.com',
                     'password' => bcrypt('password'),
                     'tanggal_lahir' => $faker->date('Y-m-d'),
@@ -60,7 +59,7 @@ class UserSeeder extends Seeder
                     'no_telp' => $faker->phoneNumber,
                     'angkatan' => $angkatan[array_rand($angkatan)],
                     'kelas' => $kelas[array_rand($kelas)],
-                    'jenis_kelamin' => $jk[array_rand($jk)],
+                    'created_at' => now(),
                 ]
             );
 

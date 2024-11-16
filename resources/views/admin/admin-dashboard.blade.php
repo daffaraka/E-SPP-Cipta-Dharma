@@ -1,6 +1,41 @@
 @extends('admin.admin-layout')
 @section('content')
     <div class="row">
+        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Total Siswa</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ $total_siswa }}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
+            <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                <div class="card-header">Total Petugas</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ $total_petugas }}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
+            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">Total Laki-laki</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ $total_laki }}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
+            <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+                <div class="card-header">Total Perempuan</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ $total_perempuan }}</h5>
+                </div>
+            </div>
+        </div>
 
         <div class="col-xl-3 col-md-6">
             <div class="card bg-info text-white mb-4">
