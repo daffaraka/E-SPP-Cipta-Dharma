@@ -3,10 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BiayaController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelunasanController;
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\LaporanPetugasController;
+use App\Models\Siswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +35,17 @@ Route::middleware('auth')->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('siswa',SiswaController::class);
+    Route::post('filter-siswa',[SiswaController::class,'filter'])->name('siswa.filter');
+
     Route::resource('tagihan',TagihanController::class);
+    Route::post('filter-tagihan',[TagihanController::class,'filter'])->name('tagihan.filter');
+
     Route::resource('biaya',BiayaController::class);
+    Route::post('filter-biaya',[BiayaController::class,'filter'])->name('biaya.filter');
+
+    Route::resource('pembayaran',PembayaranController::class);
+    Route::resource('laporan-petugas',LaporanPetugasController::class);
+    Route::resource('petugas',LaporanPetugasController::class);
 
 
     Route::get('pelunasan/{id}', [PelunasanController::class, 'tagihan'])->name('pelunasan.tagihan');

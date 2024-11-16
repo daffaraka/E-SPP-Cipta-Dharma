@@ -2,9 +2,41 @@
 @section('content')
     <div class="row">
 
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-info text-white mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Petugas</h5>
+                    <p class="card-text">{{ $petugas }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Siswa</h5>
+                    <p class="card-text">{{ $siswa }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Siswa Pria</h5>
+                    <p class="card-text">{{ $siswa_pria }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-danger text-white mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Siswa Perempuan</h5>
+                    <p class="card-text">{{ $siswa_perempuan }}</p>
+                </div>
+            </div>
+        </div>
         <div class="col-12">
 
-            @if ($tagihanBelumLunas != null)
+            {{-- @if ($tagihanBelumLunas != null)
                 <div class="card rounded-0">
                     <div class="card-body ">
                         <h5 class="card-title">Tagihan yang belum anda bayarkan</h5>
@@ -26,7 +58,7 @@
                     </div>
                 </div>
             @else
-            @endif
+            @endif --}}
 
         </div>
 

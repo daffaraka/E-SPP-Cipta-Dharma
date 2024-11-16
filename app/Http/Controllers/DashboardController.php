@@ -13,10 +13,15 @@ class DashboardController extends Controller
     {
 
         $auth_id = Auth::user()->id;
-        $data['tagihanBelumLunas'] = User::with('tagihans')->whereHas('tagihans', function ($tagihan) {
-                $tagihan->whereStatus('Belum Lunas');
-            })
-        ->find($auth_id);
+        $data['petugas'] = User::role('petugas')->count();
+        $data['siswa'] = User::role('SiswaOrangTua')->count();
+        $data['siswa_pria'] = User::where('jenis_kelamin', 'Laki-laki')->count();
+        $data['siswa_perempuan'] = User::where('jenis_kelamin', 'Perempuan')->count();
+
+        // $data['tagihanBelumLunas'] = User::with('tagihans')->whereHas('tagihans', function ($tagihan) {
+        //         $tagihan->whereStatus('Belum Lunas');
+        //     })
+        // ->find($auth_id);
         // $data = Tagihan::with('siswa.user')->whereStatus('Belum Lunas')->count();
         // ->whereSiswaId($user_id)->whereStatus('Belum lunas')->count();
 

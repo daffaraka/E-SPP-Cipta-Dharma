@@ -5,21 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class SiswaController extends Controller
+class PetugasController extends Controller
 {
-
     public function index()
     {
-        $data['judul'] = 'Data Siswa';
-        $data['siswas'] = User::role('SiswaOrangTua')->latest()->get();
+        $data['judul'] = 'Data Petugas';
+        $data['petugas'] = User::role(['Petugas','KepalaSekolah'])->latest()->get();
 
-        return view('admin.siswa.siswa-index',$data);
+        return view('admin.petugas.petugas-index',$data);
     }
 
 
     public function create()
     {
-        return view('admin.siswa.siswa-create');
+        return view('admin.petugas.petugas-create');
     }
 
 
@@ -63,14 +62,19 @@ class SiswaController extends Controller
     }
 
 
-
-
-
-    public function edit(User $siswa)
+    public function show(User $petuga)
     {
-        return view('admin.siswa.siswa-edit',compact('siswa'));
+
+
+        return view('admin.petugas.petugas-show',compact('petuga'));
     }
-    public function update(Request $request, User $siswa)
+
+
+    public function edit(User $petugas)
+    {
+        return view('admin.petugas.petugas-edit',compact('siswa'));
+    }
+    public function update(Request $request, User $petugas)
     {
         $this->validate($request,[
             'nama' => 'required',
@@ -111,25 +115,9 @@ class SiswaController extends Controller
     }
 
 
-    public function destroy(User $siswa)
+    public function destroy(User $petugas)
     {
-        $siswa->delete();
+        $petugas->delete();
         return redirect()->route('siswa.index')->with('success','Data siswa telah dihapus');
-    }
-
-
-    public function filter(Request $request)
-    {
-        // dd($request->all());
-        return response()->json(
- User::role('SiswaOrangTua')->when($request->filter_angkatan != null, function ($query) use ($request) {
-                    return $query->where('angkatan', $request->filter_angkatan);
-                })
-
-                ->when($request->filter_kelas != null, function ($query) use ($request) {
-                    return $query->where('kelas', $request->filter_kelas);
-                })
-                ->get()
-        );
     }
 }

@@ -1,21 +1,11 @@
 @extends('admin.admin-layout')
 @section('content')
-    <form action="{{ route('siswa.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('petugas.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
-            <label for="">Nama Siswa</label>
+            <label for="">Nama petugas</label>
             <input type="text" name="nama" class="form-control" required autocomplete="">
-        </div>
-
-        <div class="mb-3">
-            <label for="">NIS</label>
-            <input type="text" name="nis" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="">NISN</label>
-            <input type="text" name="nisn" class="form-control" required>
         </div>
 
         <div class="mb-3">
@@ -24,8 +14,23 @@
         </div>
 
         <div class="mb-3">
-            <label for="">Password</label>
-            <input type="password" name="password" class="form-control" required>
+            <label for="">Kelas</label>
+            <select  name="kelas" class="form-control" required>
+                <option value="10A">10A</option>
+                <option value="10B">10B</option>
+                <option value="10C">10C</option>
+                <option value="11A">11A</option>
+                <option value="11B">11B</option>
+                <option value="11C">11C</option>
+                <option value="12A">12A</option>
+                <option value="12B">12B</option>
+                <option value="12C">12C</option>
+
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="">Angkatan</label>
+            <input type="number" name="angkatan" class="form-control" required>
         </div>
 
         <div class="mb-3">
@@ -62,31 +67,12 @@
             <input type="number" name="no_telp" class="form-control" required>
         </div>
 
+
         <div class="mb-3">
             <label for="">Nama Wali</label>
             <input type="text" name="nama_wali" class="form-control" required>
         </div>
 
-        <div class="mb-3">
-            <label for="">Angkatan</label>
-            <input type="number" name="angkatan" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="">Kelas</label>
-            <select  name="kelas" class="form-control" required>
-                <option value="10A">10A</option>
-                <option value="10B">10B</option>
-                <option value="10C">10C</option>
-                <option value="11A">11A</option>
-                <option value="11B">11B</option>
-                <option value="11C">11C</option>
-                <option value="12A">12A</option>
-                <option value="12B">12B</option>
-                <option value="12C">12C</option>
-
-            </select>
-        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

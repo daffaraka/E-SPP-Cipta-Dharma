@@ -27,17 +27,17 @@ class UserSeeder extends Seeder
 
         $admin =  User::create(
             [
-                'name' => 'Admin',
+                'nama' => 'Petugas',
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('password'),
             ]
         );
 
-        $admin->assignRole('admin');
+        $admin->assignRole('petugas');
 
         $kepsek = User::create(
             [
-                'name' => 'Kepsek',
+                'nama' => 'Kepsek',
                 'email' => 'kepsek@gmail.com',
                 'password' => bcrypt('password')
             ]
@@ -49,16 +49,18 @@ class UserSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $user = User::create(
                 [
-                    'name' => 'User ' . $i,
+                    'nama' => $faker->name,
+                    'nis' => $faker->unique()->numberBetween(100000, 999999),
+                    'nisn' => $faker->unique()->numberBetween(1000000000, 9999999999),
                     'email' => 'user' . $i . '@gmail.com',
                     'password' => bcrypt('password'),
-                    'tanggal_lahir' => $faker->date(),
+                    'tanggal_lahir' => $faker->date('Y-m-d'),
                     'nama_wali' => $faker->name,
                     'alamat' => $faker->address,
                     'no_telp' => $faker->phoneNumber,
                     'angkatan' => $angkatan[array_rand($angkatan)],
                     'kelas' => $kelas[array_rand($kelas)],
-                    'created_at' => now(),
+                    'jenis_kelamin' => $jk[array_rand($jk)],
                 ]
             );
 

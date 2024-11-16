@@ -15,17 +15,18 @@ class TagihanController extends Controller
     public function index()
     {
         $data['judul'] = 'Tagihan';
-        $data['tagihans'] = Tagihan::with(['siswa','biaya','penerbit','melunasi'])->latest()->paginate(10);
-        return view('admin.tagihan.tagihan-index',$data);
+        $data['tagihans'] = Tagihan::with(['siswa', 'biaya', 'penerbit', 'melunasi'])->latest()->paginate(10);
+        $data['kelas'] = User::role('SiswaOrangTua')->select('id', 'kelas')->get()->unique();
+        return view('admin.tagihan.tagihan-index', $data);
     }
 
     public function create()
     {
         $data['judul'] = 'Tambah Tagihan';
         $data['siswas'] = User::role('SiswaOrangTua')->get();
-        $data['biayas'] = Biaya::select('id','nama_biaya','nominal')->get();
+        $data['biayas'] = Biaya::select('id', 'nama_biaya', 'nominal')->get();
 
-        return view('admin.tagihan.tagihan-create',$data);
+        return view('admin.tagihan.tagihan-create', $data);
     }
 
     public function store(Request $request)
@@ -35,7 +36,7 @@ class TagihanController extends Controller
         $request->validate([
             'user_id' => 'required',
             'biaya_id' => 'required',
-        ],[
+        ], [
             'user_id.required' => 'Siswa harus dipilih',
             'biaya_id.required' => 'Biaya harus dipilih',
         ]);
@@ -52,7 +53,7 @@ class TagihanController extends Controller
 
         $tagihan->save();
 
-        return to_route('tagihan.index')->with('success','Tagihan baru ditambahkan');
+        return to_route('tagihan.index')->with('success', 'Tagihan baru ditambahkan');
     }
 
     // public function show(Tagihan $tagihan)
@@ -65,10 +66,10 @@ class TagihanController extends Controller
     public function edit(Tagihan $tagihan)
     {
         $data['judul'] = 'Edit Data Tagihan';
-        $data['siswas'] = User::select('id','nama')->get();
-        $data['biayas'] = Biaya::select('id','nama_biaya','nominal')->get();
+        $data['siswas'] = User::select('id', 'nama')->get();
+        $data['biayas'] = Biaya::select('id', 'nama_biaya', 'nominal')->get();
         $data['tagihan'] = $tagihan;
-        return view('admin.tagihan.tagihan-edit',$data);
+        return view('admin.tagihan.tagihan-edit', $data);
     }
 
     public function update(Request $request, Tagihan $tagihan)
@@ -76,7 +77,7 @@ class TagihanController extends Controller
         $request->validate([
             'user_id' => 'required',
             'biaya_id' => 'required',
-        ],[
+        ], [
             'user_id.required' => 'Siswa harus dipilih',
             'biaya_id.required' => 'Biaya harus dipilih',
         ]);
@@ -91,13 +92,41 @@ class TagihanController extends Controller
         $tagihan->status = $request->status;
         $tagihan->user_penerbit_id = auth()->user()->id;
 
-        return to_route('tagihan.index')->with('success','Tagihan telah diperbarui');
-
+        return to_route('tagihan.index')->with('success', 'Tagihan telah diperbarui');
     }
 
     public function destroy(Tagihan $tagihan)
     {
+        $tagihan->delete();
+        return to_route('tagihan.index')->with('success', 'Tagihan telah dihapus');
+    }
 
+
+    public function filter(Request $request)
+    {
+        // dd($request->all());
+        if (empty($request->filter_tahun) && empty($request->filter_bulan)) {
+            return response()->json([]);
+        } else {
+            return response()->json(
+                Tagihan::with('siswa')->when(!empty($request->filter_tahun), function ($query) use ($request) {
+                    $query->whereYear('created_at', $request->filter_tahun);
+                })
+                    ->when(!empty($request->filter_bulan), function ($query) use ($request) {
+                        $query->whereMonth('created_at', $request->filter_bulan);
+                    })->when($request->filter_angkatan != null, function ($query) use ($request) {
+                        return $query->whereHas('siswa', function ($query) use ($request) {
+                            $query->where('angkatan', $request->filter_angkatan);
+                        });
+                    })
+
+                    ->when($request->filter_kelas != null, function ($query) use ($request) {
+                        return $query->whereHas('siswa', function ($query) use ($request) {
+                            $query->where('kelas', $request->filter_kelas);
+                        });
+                    })
+                    ->get()
+            );
+        }
     }
 }
-

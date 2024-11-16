@@ -15,7 +15,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::create(['name' => 'Admin']);
+        Role::create(['name' => 'Petugas']);
         Role::create(['name' => 'KepalaSekolah']);
         Role::create(['name' => 'SiswaOrangTua']);
 
@@ -57,7 +57,7 @@ class RoleSeeder extends Seeder
 
         ];
 
-        $adminRole = Role::where('name', 'Admin')->first();
+        $adminRole = Role::where('name', 'Petugas')->first();
         $adminRole->syncPermissions($adminPermissions);
 
         $kepsekRole = Role::where('name', 'KepalaSekolah')->first();

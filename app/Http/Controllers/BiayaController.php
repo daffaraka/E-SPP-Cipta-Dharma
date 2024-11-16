@@ -92,4 +92,23 @@ class BiayaController extends Controller
         $biaya->delete();
         return redirect()->route('biaya.index')->with('success', 'Data biaya telah dihapus');
     }
+
+    public function filter(Request $request)
+    {
+        // dd($request->all());
+        if(empty($request->filter_tahun) && empty($request->filter_bulan)){
+            return response()->json([]);
+        } else {
+            return response()->json(
+                Biaya::when(!empty($request->filter_tahun), function ($query) use ($request) {
+                        $query->where('tahun', $request->filter_tahun);
+                    })
+                    ->when(!empty($request->filter_bulan), function ($query) use ($request) {
+                        $query->where('bulan', $request->filter_bulan);
+                    })
+                    ->get()
+            );
+        }
+
+    }
 }
